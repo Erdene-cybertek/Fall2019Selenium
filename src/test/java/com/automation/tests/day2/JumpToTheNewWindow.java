@@ -1,7 +1,5 @@
 package com.automation.tests.day2;
 
-import com.sun.java.util.jar.pack.DriverResource;
-import com.sun.org.apache.xerces.internal.dom.DeferredEntityReferenceImpl;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,12 +27,25 @@ public class JumpToTheNewWindow {
         System.out.println(windowHandles);
         System.out.println("BEFORE SWITCH : " + driver.getCurrentUrl());
 
-        for (String windowId: windowHandles){
+        for (String windowId: windowHandles){                                              // 2 window hoorond shiljine
             if (!windowId.equals(windowHandle)){
                 driver.switchTo().window(windowId);
             }
         }
         System.out.println("AFTER SWITCH : " + driver.getCurrentUrl());
         driver.close();
+    }
+
+    /**
+     * This method helps to switch in between windows on page title
+     */
+    public static void switchToWindowBasedOnTitle(String pageTitle, WebDriver driver) {    // 2s deesh window neegsen uyd ashiglana
+        Set<String> windows = driver.getWindowHandles();
+        for (String window: windows){
+            if (driver.getTitle().equals(pageTitle)){
+                break;
+            }
+
+        }
     }
 }

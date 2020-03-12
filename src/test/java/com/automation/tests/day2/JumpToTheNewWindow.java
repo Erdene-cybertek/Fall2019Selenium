@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class JumpToTheNewWindow {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 
         WebDriverManager.chromedriver().setup();
 

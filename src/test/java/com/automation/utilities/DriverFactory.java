@@ -5,13 +5,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class DriverFacoty {
+public class DriverFactory {
 
     public static WebDriver createADrive(String browserName){
 
-        if (browserName.equalsIgnoreCase("chrome")){
+        if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             return new ChromeDriver();
+
+        } else if (browserName.equalsIgnoreCase("opera")) {
+            WebDriverManager.operadriver().setup();
+            return new ChromeDriver();
+
+        } else if (browserName.equalsIgnoreCase("edge")) {
+            WebDriverManager.edgedriver().setup();
+            return new ChromeDriver();
+
         } else {
             WebDriverManager.firefoxdriver().setup();
             return new FirefoxDriver();

@@ -28,15 +28,14 @@ public class FindElementsTest {
 
         }
 
-        for (int i = 1; i < links.size(); i++) {
-            links.get(i).click();
+        // the we can click every link and go back window
 
+        for (int i = 1; i < links.size(); i++) {            // i = 0 geed ehelbel Home-ruu orno tgd go back hiij bolohgui baigaa uchraas 1s ehellee
+
+            driver.findElements(By.tagName("a")).get(i).click();
             driver.navigate().back();
-            //refresh list
-            links = driver.findElements(By.tagName("a"));
 
         }
-
 
         driver.quit();
     }

@@ -26,11 +26,8 @@ public class RadioButtons {
         for (WebElement radioButton: radioButtons){
 
             String id = radioButton.getAttribute("id");
-
             boolean isSelected = radioButton.isSelected();
-
             System.out.println(id +" is selected? "+isSelected);
-
             if(radioButton.isEnabled()){
                                       // isEnabled - "Green button darj bolohgui bgaa zuvhun darj boldgiig hevlej bna.
             radioButton.click();

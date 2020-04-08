@@ -1,17 +1,59 @@
 package com.automation.tests.day8;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class BasicTestNGTests {
 
-    @Test(description = "Verify if method can reverse a string")
+    //runs only once before @BeforeClass and @Before Method
+    @BeforeTest
+    public void beforeTest(){
+        System.out.println("BEFORE TEST");
+    }
+
+    @AfterTest
+    public void afterTest(){
+        System.out.println("AFTER TEST");
+    }
+
+
+        // Runs only once in the class before @beforemethod and before any test
+         // regardless on number of tests, it runs only once
+    @BeforeClass
+    public void beforeClass(){
+         //something that should be done only once in the class before all tests
+         System.out.println("BEFORE CLASS");
+    }
+
+    @AfterClass
+    public void afterClass(){
+        //something that should be done only once in the class before all tests
+        System.out.println("AFTER CLASS");
+    }
+
+
+        //runs before every test automatically
+         //works as a pre-condition or setup
+    @BeforeMethod
+    public void setup(){
+        System.out.println("BEFORE METHOD");
+    }
+
+        // runs automatically after every test
+    @AfterMethod
+    public void teardown(){
+        System.out.println("AFTER METHOD");
+
+    }
+
+    @Test
     public void test1() {
         System.out.println("TEST 1");
         String expected = "apple";
         String actual = "apple";
         Assert.assertEquals(actual, expected);
     }
+
     @Test
     public void test2(){
         System.out.println("TEST 2");

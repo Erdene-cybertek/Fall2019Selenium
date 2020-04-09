@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -24,7 +25,13 @@ public class SearchTests {
         BrowserUtilities.wait(2);
         List<WebElement> searchItems = driver.findElements(By.tagName("h3"));
         for (WebElement eachSearchItem: searchItems){
-            System.out.println(eachSearchItem.getText());
+            String variable = eachSearchItem.getText();
+            // if there is a a text - print it
+            if(!variable.isEmpty()){
+                System.out.println(variable);
+                // verify that every search result contains java
+                Assert.assertTrue(variable.toLowerCase().contains("java"));
+            }
         }
 
     }

@@ -23,20 +23,42 @@ public class SearchTests {
         driver.get("https://www.google.com/");
         driver.findElement(By.name("q")).sendKeys("java", Keys.ENTER);
         BrowserUtilities.wait(2);
-        List<WebElement> searchItems = driver.findElements(By.tagName("h3"));
+        List<WebElement> searchItems = driver.findElements(By.tagName("title"));
         for (WebElement eachSearchItem: searchItems){
             String variable = eachSearchItem.getText();
             // if there is a a text - print it
             if(!variable.isEmpty()){
                 System.out.println(variable);
                 // verify that every search result contains java
-                Assert.assertTrue(variable.equalsIgnoreCase("java"));
+                // Assert.assertTrue(variable.equalsIgnoreCase("java"));
             }
         }
 
     }
 
+    @Test (description = "Search for Java book on amazon")
+    public void amazonSearchTest(){
+        driver.get("https://www.amazon.com/");
+        BrowserUtilities.wait(2);
 
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Java", Keys.ENTER);
+        BrowserUtilities.wait(2);
+
+        List<WebElement> searchItems = driver.findElements(By.tagName("h2"));
+
+        searchItems.get(0).click();
+        BrowserUtilities.wait(2);
+
+        WebElement productTitle = driver.findElement(By.id("productTitle"));
+        String producTitleString = productTitle.getText();
+        System.out.println(producTitleString);
+
+        Assert.assertTrue(producTitleString.contains("Java"));
+
+
+
+
+    }
     @BeforeMethod
     public void setup(){
         //setup webdriver

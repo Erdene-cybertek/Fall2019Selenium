@@ -30,7 +30,7 @@ public class SearchTests {
             if(!variable.isEmpty()){
                 System.out.println(variable);
                 // verify that every search result contains java
-                Assert.assertTrue(variable.toLowerCase().contains("java"));
+                Assert.assertTrue(variable.equalsIgnoreCase("java"));
             }
         }
 

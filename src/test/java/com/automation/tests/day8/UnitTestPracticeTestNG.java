@@ -1,4 +1,4 @@
-package com.automation.tests.TestPractice;
+package com.automation.tests.day8;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

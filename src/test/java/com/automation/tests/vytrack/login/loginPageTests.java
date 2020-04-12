@@ -18,6 +18,10 @@ public class loginPageTests {
 
     private WebDriver driver;
     private String URL = "https://qa2.vytrack.com/user/login";
+    // correct credentials for storemanager
+    private String username = "storemanager85";
+    private String password = "UserUser123";
+
     private By usernameBy = By.id("prependedInput");
     private By passwordBy = By.id("prependedInput2");
     private By warningMessageBy = By.xpath("//*[@id='login-form']/fieldset/div[1]/div");
@@ -37,6 +41,16 @@ public class loginPageTests {
         assertEquals(actual,expected);
     }
 
+    @Test (description = "Login as store manager and verify that title is equals to Dashboard")
+    public void loginAsStoreManager (){
+        driver.findElement(usernameBy).sendKeys(username);
+        driver.findElement(passwordBy).sendKeys(password, Keys.ENTER);
+        BrowserUtilities.wait(2);
+
+        String expected = "Dashboard";
+        String actual = driver.getTitle();
+        assertEquals(actual,expected, "Page title is not correct!");
+    }
 
 
     @BeforeMethod

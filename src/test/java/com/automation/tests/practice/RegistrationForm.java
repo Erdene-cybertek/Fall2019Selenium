@@ -4,6 +4,7 @@ import com.automation.utilities.BrowserUtilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -40,37 +41,49 @@ public class RegistrationForm {
 
     @Test
     public void test1(){
-    driver.findElement(firstNameBy).sendKeys("Patrick");
-    driver.findElement(lastNameBy).sendKeys("White");
-    driver.findElement(userNameBy).sendKeys("testuser");
-    driver.findElement(emailBy).sendKeys("testuser@gmail.com");
-    driver.findElement(passwordBy).sendKeys("123456789");
-    driver.findElement(phoneBy).sendKeys("571-000-0000");
+        driver.findElement(firstNameBy).sendKeys("Patrick");
+        driver.findElement(lastNameBy).sendKeys("White");
+         driver.findElement(userNameBy).sendKeys("testuser");
+         driver.findElement(emailBy).sendKeys("testuser@gmail.com");
+         driver.findElement(passwordBy).sendKeys("123456789");
+         driver.findElement(phoneBy).sendKeys("571-000-0000");
 
-    driver.findElement(maleBy).click();
+        driver.findElement(maleBy).click();
 
-    driver.findElement(birthdayBy).sendKeys("01/01/1990");
+        driver.findElement(birthdayBy).sendKeys("01/01/1990");
 
-    Select departmentSelect = new Select(driver.findElement(departmentBy));
-    departmentSelect.selectByVisibleText("Department of Agriculture");
+        Select departmentSelect = new Select(driver.findElement(departmentBy));
+        departmentSelect.selectByVisibleText("Department of Agriculture");
 
-    Select jobTitleSelect = new Select(driver.findElement(jobtitleBy));
-    jobTitleSelect.selectByVisibleText("SDET");
+        Select jobTitleSelect = new Select(driver.findElement(jobtitleBy));
+        jobTitleSelect.selectByVisibleText("SDET");
 
-    driver.findElement(javaBy).click();
-    driver.findElement(signUpBy).click();
+        driver.findElement(javaBy).click();
+        driver.findElement(signUpBy).click();
 
-    BrowserUtilities.wait(2);
+        BrowserUtilities.wait(2);
 
-    String expected = "You've successfully completed registration!";
-    String actual = driver .findElement(By.tagName("p")).getText();
-    Assert.assertEquals(actual,expected);
-
-
+        String expected = "You've successfully completed registration!";
+        String actual = driver .findElement(By.tagName("p")).getText();
+        Assert.assertEquals(actual,expected);
 
     }
 
+    @Test
+    public void verifyFirstNameLengthTest(){
+        driver.findElement(firstNameBy).sendKeys("a");
+        BrowserUtilities.wait(2);
+        WebElement warningMessage = driver.findElement(By.xpath("//small[text()='first name must be more than 2 and less than 64 characters long']"));
+        Assert.assertTrue(warningMessage.isDisplayed());
+    }
 
+    @Test
+    public void verifyAlphabeticLettersOnlyTest(){
+        driver.findElement(firstNameBy).sendKeys("123");
+        BrowserUtilities.wait(2);
+        WebElement warningMessage = driver.findElement(By.xpath("//small[text()='first name can only consist of alphabetical letters']"));
+        Assert.assertTrue(warningMessage.isDisplayed());
+    }
 
 
     @BeforeMethod

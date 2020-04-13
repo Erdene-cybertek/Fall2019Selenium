@@ -5,6 +5,7 @@ import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -25,17 +26,22 @@ public class WebTables {
 
     @Test
     public void getColumnNames(){
-        List <String> expected = Arrays.asList("Last Name" +
-                "First Name" +
-                "Email" +
-                "Due" +
-                "Web Site" +
-                "Action");
+        List <String> expected = Arrays.asList("Last Name", "First Name", "Email", "Due", "Web Site", "Action");
 
         List<WebElement> columnNames = driver.findElements(By.xpath("//table[1]//th"));
+        // just to print
         for (WebElement columnName : columnNames){
             System.out.println(columnName.getText());
         }
+
+        Assert.assertEquals(BrowserUtilities.getTextFromWebElements(columnNames), expected);
+    }
+
+    @Test
+    public void verifyRowCount(){
+        List<WebElement> rows = driver.findElements(By.xpath("//table[1]//tbody//tr"));
+        // if we will get a size of this collection, it automatically equals to number of elements
+        Assert.assertEquals(rows.size(), 4);
     }
 
     @AfterMethod

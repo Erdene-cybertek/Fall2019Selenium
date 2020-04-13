@@ -1,4 +1,4 @@
-package com.automation.tests.day7;
+package com.automation.tests.day7_Xpath_CssSelector;
 
 import com.automation.utilities.BrowserUtilities;
 import io.github.bonigarcia.wdm.WebDriverManager;

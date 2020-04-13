@@ -1,4 +1,4 @@
-package com.automation.tests.day11_JSExecutor;
+package com.automation.tests.day11_JSExecutor_WebTables;
 
 import com.automation.utilities.BrowserUtilities;
 import com.automation.utilities.DriverFactory;
@@ -89,8 +89,18 @@ public class JSExecutor2 {
         WebElement link = driver.findElement(By.linkText("Cybertek School"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true)", link);
-        BrowserUtilities.wait(2);
 
+    }
+
+    @Test
+    public void scrollTest(){
+        driver.navigate().to("http://practice.cybertekschool.com/infinite_scroll");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        for (int x = 0; x < 15; x++) {
+            js.executeScript("window.scrollBy(0, 1000)");
+            BrowserUtilities.wait(1);
+        }
     }
 
 

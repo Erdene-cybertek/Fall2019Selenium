@@ -1,5 +1,10 @@
 package com.automation.utilities;
 
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class BrowserUtilities {
 
     public static void wait(int seconds){
@@ -9,5 +14,13 @@ public class BrowserUtilities {
             e.printStackTrace();
         }
 
+    }
+
+    public static List<String> getTextFromWebElements(List<WebElement> elements){
+        List<String> textValues = new ArrayList<>();
+        for (WebElement element : elements){
+            textValues.add(element.getText());
+        }
+        return  textValues;
     }
 }

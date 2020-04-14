@@ -19,7 +19,7 @@ public class WebTables {
 
     @BeforeMethod
     public void setup(){
-        driver = DriverFactory.createInvisibleDriverChromeOnly();
+        driver = DriverFactory.createADrive("chrome");
         driver.get("http://practice.cybertekschool.com/tables");
         driver.manage().window().maximize();
     }
@@ -52,8 +52,68 @@ public class WebTables {
     public void getSpecificColumn(){
     // td[5] - column with links
         List<WebElement> links = driver.findElements(By.xpath("//table[1]//tbody//tr//td[5]"));
+        System.out.println(BrowserUtilities.getTextFromWebElements(links));
+    }
+
+    @Test
+    public void deleteRowTest(){
+        String xpath = "//table[1]//td[text()='jsmith@gmail.com']/..//a[text()='delete']";
+        driver.findElement(By.xpath(xpath)).click();
+        BrowserUtilities.wait(2);
+
+        int rowCount = driver.findElements(By.xpath("//table[1]//tbody//tr")).size();
+
+        Assert.assertEquals(rowCount, 3);
+
+        List<WebElement> emails = driver.findElements(By.xpath("//table[1]//td[text()='jsmith@gmail.com']"));
+        Assert.assertTrue(emails.isEmpty());
+    }
+
+    /**
+     * Let's write a function that will return column index based on column name
+     */
+    @Test
+    public void getColumnIndexByName(){
+        String columnName = "Email";
+
+        List <WebElement> columnNames = driver.findElements(By.xpath("//table[2]//th"));
+
+        int index = 0;
+        for (int x = 0; x < columnNames.size(); x++) {
+
+            String actualColumnName = columnNames.get(x).getText();
+
+            System.out.println(String.format("Column name %s, position %s", actualColumnName, x));
+
+            if (actualColumnName.equals(columnName)) {
+                index = x + 1;
+                break;
+            }
+        }
+        Assert.assertEquals(index, 3);
 
     }
+
+    @Test
+    public void getSpecificCell(){
+
+
+        String expected = "http://www.jsmith.com";
+
+        int row = 1 ;
+        int column = 5;
+
+        String xpath = "//table[1]//tbody//tr[" + row + "]//td[" + column + "]";
+
+        WebElement cell = driver.findElement(By.xpath(xpath));
+
+        Assert.assertEquals(cell.getText(), expected);
+
+
+
+    }
+
+
 
     @AfterMethod
     public void teardown(){
@@ -61,3 +121,4 @@ public class WebTables {
         driver.quit();
     }
 }
+

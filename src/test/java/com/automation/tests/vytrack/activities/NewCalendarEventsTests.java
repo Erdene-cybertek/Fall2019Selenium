@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
+import java.util.List;
 
 public class NewCalendarEventsTests extends AbstractTestBase {
 
@@ -31,6 +33,7 @@ public class NewCalendarEventsTests extends AbstractTestBase {
 
     @Test
     public void timeDifferenceTest(){
+
         loginPage.login();
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
         calendarEventsPage.clickToCreateCalendarEvent();
@@ -45,5 +48,29 @@ public class NewCalendarEventsTests extends AbstractTestBase {
 
     }
 
+    /**
+     * Test Case: Verify calendar events table
+     * Login as store manager
+     * Go to Activities --> Calendar Events
+     * And verify that column names displayed:
+     * |TITLE            |
+     * |CALENDAR         |
+     * |START            |
+     * |END              |
+     * |RECURRENT        |
+     * |RECURRENCE       |
+     * |INVITATION STATUS|
+     */
+
     @Test
+    public void verifyColumnNamesTest() {
+
+        loginPage.login();
+        calendarEventsPage.navigateTo("Activities", "Calendar Events");
+
+        List<String> expected = Arrays.asList("TITLE", "CALENDAR", "START", "END", "RECURRENT", "RECURRENCE", "INVITATION STATUS");
+
+        Assert.assertEquals(calendarEventsPage.getColumnNames(), expected);
+
+    }
 }

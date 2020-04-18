@@ -30,7 +30,7 @@ public class BrowserUtilities {
     /**
      * waits for backgrounds processes on the browser to complete
      *
-     * @param timeOutInSeconds 10
+     * @param timeOutInSeconds
      */
     public static void waitForPageToLoad(long timeOutInSeconds) {
         ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
@@ -41,4 +41,28 @@ public class BrowserUtilities {
             error.printStackTrace();
         }
     }
+
+    /**
+     * Clicks on an element using JavaScript
+     *
+     * @param element
+     */
+    public static void clickWithJS(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+    }
+
+    /**
+     * Scroll to element using JavaScript
+     *
+     * @param element
+     */
+    public static void scrollTo(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    /**
+     * @param name screenshot name
+     * @return path to the screenshot
+     */
 }

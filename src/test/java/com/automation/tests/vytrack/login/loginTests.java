@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 //Static import of all ASSERTIONS
 import static org.testng.Assert.*;
 
-public class loginPageTests {
+public class loginTests {
 
     private WebDriver driver;
     private String URL = "https://qa2.vytrack.com/user/login";

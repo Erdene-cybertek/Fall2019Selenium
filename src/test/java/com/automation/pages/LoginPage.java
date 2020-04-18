@@ -37,14 +37,13 @@ public class LoginPage {
     }
 
     /**
-     * Mthod to login, version #1
+     * Method to login, version #1
      *Login as a Specific user
-     * @param usernameValue
-     * @param passwordValue
      */
     public void login(String usernameValue, String passwordValue) {
         username.sendKeys(usernameValue);
         password.sendKeys(passwordValue, Keys.ENTER);
+        BrowserUtilities.waitForPageToLoad(10);
         BrowserUtilities.wait(2);
     }
 

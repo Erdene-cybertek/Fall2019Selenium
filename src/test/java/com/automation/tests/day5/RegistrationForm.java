@@ -1,6 +1,6 @@
 package com.automation.tests.day5;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +16,7 @@ public class RegistrationForm {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get("http://practice.cybertekschool.com/registration_form");
-        BrowserUtilities.wait(5);
+        BrowserUtils.wait(5);
 
         driver.findElement(By.name("firstname")).sendKeys("John");
         driver.findElement(By.name("lastname")).sendKeys("Smith");
@@ -32,7 +32,7 @@ public class RegistrationForm {
         driver.findElement(By.id("inlineCheckbox2")).click();
 
         driver.findElement(By.id("wooden_spoon")).click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
 
 

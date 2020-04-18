@@ -1,6 +1,6 @@
 package com.automation.pages;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.Driver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -36,7 +36,7 @@ public abstract class AbstractPageBase {
 
 
     public String getCurrentUserName(){
-        BrowserUtilities.waitForPageToLoad(10);
+        BrowserUtils.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(currentUser));
         return currentUser.getText().trim();
     }
@@ -56,7 +56,7 @@ public abstract class AbstractPageBase {
 
         Actions actions = new Actions(driver);
 
-        BrowserUtilities.wait(4);
+        BrowserUtils.wait(4);
 
         actions.moveToElement(tabElement).
                 pause(2000).
@@ -64,7 +64,7 @@ public abstract class AbstractPageBase {
                 build().perform();
 
         //increase this wait time if still failing
-        BrowserUtilities.wait(4);
+        BrowserUtils.wait(4);
     }
 
     /**

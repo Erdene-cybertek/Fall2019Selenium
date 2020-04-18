@@ -1,6 +1,6 @@
 package com.automation.tests.day12_Synchronization;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -46,7 +46,7 @@ public class FluentWaitTest { // Loading overlay that disappears and disappears
 
     @AfterMethod
     public void teardown(){
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.quit();
     }
 }

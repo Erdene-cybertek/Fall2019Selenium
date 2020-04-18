@@ -1,6 +1,6 @@
 package com.automation.tests.day12_Synchronization;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -83,7 +83,7 @@ public class ExplicitWait {   // shuud garch irdgui buffering hiigeed loading hi
 
     @AfterMethod
     public void teardown(){
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.quit();
     }
 }

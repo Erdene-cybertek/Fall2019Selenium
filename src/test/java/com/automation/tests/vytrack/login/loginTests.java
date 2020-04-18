@@ -1,6 +1,6 @@
 package com.automation.tests.vytrack.login;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -32,7 +32,7 @@ public class loginTests {
     public void invalidUsername (){
         driver.findElement(usernameBy).sendKeys("invalidusername");
         driver.findElement(passwordBy).sendKeys("USerUser123", Keys.ENTER);
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         WebElement warningElement = driver.findElement(warningMessageBy);
         assertTrue(warningElement.isDisplayed());
 
@@ -45,7 +45,7 @@ public class loginTests {
     public void loginAsStoreManager (){
         driver.findElement(usernameBy).sendKeys(username);
         driver.findElement(passwordBy).sendKeys(password, Keys.ENTER);
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         String expected = "Dashboard";
         String actual = driver.getTitle();

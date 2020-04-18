@@ -1,6 +1,6 @@
 package com.automation.tests.day6;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,7 @@ public class SelectByValue {
 
         WebDriver driver = DriverFactory.createADrive("chrome");
         driver.get("http://practice.cybertekschool.com/dropdown");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         Select selectByState = new Select(driver.findElement(By.id("state")));
         selectByState.selectByValue("VA");
@@ -28,7 +28,7 @@ public class SelectByValue {
 
 
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.quit();
     }
 }

@@ -1,7 +1,7 @@
 package com.automation.tests.warmup;
 
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -42,7 +42,7 @@ public class webTableTask {
         driver.get("http://practice.cybertekschool.com/tables");
         //click on column name
         driver.findElement(By.xpath("//table[1]//*[text()='Last Name']")).click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         //collect all values from the first column
         List<WebElement> column = driver.findElements(By.xpath("//table[1]//tbody//td[1]"));
         for (int i = 0; i < column.size() - 1; i++) {

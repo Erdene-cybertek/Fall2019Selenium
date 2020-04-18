@@ -1,6 +1,6 @@
 package com.automation.tests.day10_Actions;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -39,20 +39,20 @@ public class JSExecutor {
 
         for (int i = 0; i < 10; i++) {
             driver.executeScript("window.scrollBy(0, 250)");
-            BrowserUtilities.wait(1);
+            BrowserUtils.wait(1);
         }
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
     }
 
     @Test
     public void ScrollToElementTest(){
         driver.get("http://practice.cybertekschool.com/");
         driver.manage().window().maximize();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         WebElement link = driver.findElement(By.linkText("Cybertek School"));
         driver.executeScript("arguments[0].scrollIntoView(true)", link);
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
     }
 
 

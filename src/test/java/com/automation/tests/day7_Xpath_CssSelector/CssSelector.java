@@ -1,6 +1,6 @@
 package com.automation.tests.day7_Xpath_CssSelector;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ public class CssSelector {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get("http://practice.cybertekschool.com/multiple_buttons");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         WebElement heading = driver.findElement(By.cssSelector(".h3"));
         WebElement home = driver.findElement(By.cssSelector(".nav-link"));
         WebElement button1 = driver.findElement(By.cssSelector("[onclick='button1()']"));
@@ -23,22 +23,22 @@ public class CssSelector {
         WebElement button4 = driver.findElement(By.cssSelector("[onclick='button4()']"));
         WebElement button5 = driver.findElement(By.cssSelector("[onclick='button5()']"));
         WebElement button6 = driver.findElement(By.cssSelector("#disappearing_button"));
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         button1.click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         button2.click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         button3.click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         button4.click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         button5.click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         button6.click();
 
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.quit();
     }
 }

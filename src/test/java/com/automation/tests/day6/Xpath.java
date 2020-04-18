@@ -1,6 +1,6 @@
 package com.automation.tests.day6;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,7 @@ public class Xpath {
 
         WebDriver driver = DriverFactory.createADrive("chrome");
         driver.get("http://practice.cybertekschool.com/multiple_buttons");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         WebElement btn1 = driver.findElement(By.xpath("//button[@onclick='button1()']"));
         btn1.click();
 
@@ -37,7 +37,7 @@ public class Xpath {
         System.out.println(result.getText());
 
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.quit();
     }
 }

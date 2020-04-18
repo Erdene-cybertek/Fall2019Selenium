@@ -1,6 +1,6 @@
 package com.automation.tests.day5;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +17,7 @@ public class RadioButtons {
         WebDriver driver = new ChromeDriver();
         driver.get("http://practice.cybertekschool.com/radio_buttons");
         driver.manage().window().maximize();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         // <input type="radio">
 

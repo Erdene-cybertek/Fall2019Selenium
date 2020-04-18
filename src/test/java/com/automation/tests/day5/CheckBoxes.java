@@ -1,6 +1,6 @@
 package com.automation.tests.day5;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ public class CheckBoxes {
 
         WebDriver driver = DriverFactory.createADrive("chrome");
         driver.get("http://practice.cybertekschool.com/checkboxes");
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         List<WebElement> checkBoxes = driver.findElements(By.tagName("input"));
 
@@ -28,7 +28,7 @@ public class CheckBoxes {
             System.out.println("check box : " + (x+1) + " was not clicked");
             }
         }
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         driver.quit();
     }

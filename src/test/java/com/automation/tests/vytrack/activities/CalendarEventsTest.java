@@ -1,6 +1,6 @@
 package com.automation.tests.vytrack.activities;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -51,7 +51,7 @@ public class CalendarEventsTest {
     public void VerifyDefaultValues(){
         // Click on Create Calendar Event
         driver.findElement(createCalendarEventBtnCalendarBy).click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         //Default owner name should be current user
         String currentUserName = driver.findElement(currentUserBy).getText().trim();;
@@ -86,12 +86,12 @@ public class CalendarEventsTest {
         driver.manage().window().maximize();
         driver.findElement(usernameBy).sendKeys(username);
         driver.findElement(passwordBy).sendKeys(password, Keys.ENTER);
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         actions = new Actions(driver);
         actions.moveToElement(driver.findElement(activitiesBy)).perform();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.findElement(By.linkText("Calendar Events")).click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
     }
 
     @AfterMethod

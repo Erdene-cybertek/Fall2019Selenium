@@ -1,6 +1,6 @@
 package com.automation.tests.vytrack.fleet;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -61,7 +61,7 @@ public class VehicleTests {
         driver.findElement(usernameBy).sendKeys(username);
         driver.findElement(passwordBy).sendKeys(password, Keys.ENTER);
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         // driver.findElement(fleetBy).click();
         // Actions class is used for more advanced browser interactions
         Actions actions = new Actions(driver);
@@ -71,9 +71,9 @@ public class VehicleTests {
         // every actions should end with perform()
 
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.findElement(By.linkText("Vehicles")).click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
     }
 

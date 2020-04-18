@@ -1,6 +1,6 @@
 package com.automation.tests.day11_JSExecutor_WebTables;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -34,7 +34,7 @@ public class WebTables {
             System.out.println(columnName.getText());
         }
 
-        Assert.assertEquals(BrowserUtilities.getTextFromWebElements(columnNames), expected);
+        Assert.assertEquals(BrowserUtils.getTextFromWebElements(columnNames), expected);
     }
 
     @Test
@@ -52,14 +52,14 @@ public class WebTables {
     public void getSpecificColumn(){
     // td[5] - column with links
         List<WebElement> links = driver.findElements(By.xpath("//table[1]//tbody//tr//td[5]"));
-        System.out.println(BrowserUtilities.getTextFromWebElements(links));
+        System.out.println(BrowserUtils.getTextFromWebElements(links));
     }
 
     @Test
     public void deleteRowTest(){
         String xpath = "//table[1]//td[text()='jsmith@gmail.com']/..//a[text()='delete']";
         driver.findElement(By.xpath(xpath)).click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         int rowCount = driver.findElements(By.xpath("//table[1]//tbody//tr")).size();
 
@@ -117,7 +117,7 @@ public class WebTables {
 
     @AfterMethod
     public void teardown(){
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.quit();
     }
 }

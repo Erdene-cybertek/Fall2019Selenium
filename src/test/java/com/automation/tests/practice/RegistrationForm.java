@@ -1,6 +1,6 @@
 package com.automation.tests.practice;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -61,7 +61,7 @@ public class RegistrationForm {
         driver.findElement(javaBy).click();
         driver.findElement(signUpBy).click();
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         String expected = "You've successfully completed registration!";
         String actual = driver .findElement(By.tagName("p")).getText();
@@ -72,7 +72,7 @@ public class RegistrationForm {
     @Test
     public void verifyFirstNameLengthTest(){
         driver.findElement(firstNameBy).sendKeys("a");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         WebElement warningMessage = driver.findElement(By.xpath("//small[text()='first name must be more than 2 and less than 64 characters long']"));
         Assert.assertTrue(warningMessage.isDisplayed());
     }
@@ -80,7 +80,7 @@ public class RegistrationForm {
     @Test
     public void verifyAlphabeticLettersOnlyTest(){
         driver.findElement(firstNameBy).sendKeys("123");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         WebElement warningMessage = driver.findElement(By.xpath("//small[text()='first name can only consist of alphabetical letters']"));
         Assert.assertTrue(warningMessage.isDisplayed());
     }

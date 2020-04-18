@@ -1,6 +1,6 @@
 package com.automation.tests.day5;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,7 @@ public class RadioButtonTest {
 
         WebDriver driver = DriverFactory.createADrive("chrome");
         driver.get("http://practice.cybertekschool.com/radio_buttons");
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         WebElement blackButton = driver.findElement(By.id("black"));
 

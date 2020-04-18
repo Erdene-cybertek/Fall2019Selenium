@@ -1,7 +1,7 @@
 package com.automation.pages.activities;
 
 import com.automation.pages.AbstractPageBase;
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,7 +43,7 @@ public class CalendarEventsPage extends AbstractPageBase {
     }
 
     public String getOwnerName() {
-        BrowserUtilities.waitForPageToLoad(10);
+        BrowserUtils.waitForPageToLoad(10);
         // wait for element to be present in DOM
         wait.until(ExpectedConditions.presenceOfElementLocated(By.className("select2-chosen")));
         wait.until(ExpectedConditions.visibilityOf(owner));
@@ -51,32 +51,32 @@ public class CalendarEventsPage extends AbstractPageBase {
     }
 
     public String getStartDate() {
-        BrowserUtilities.waitForPageToLoad(10);
+        BrowserUtils.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(startDate));
         return startDate.getAttribute("value");
     }
 
     public String getEndDate() {
-        BrowserUtilities.waitForPageToLoad(10);
+        BrowserUtils.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(endDate));
         return endDate.getAttribute("value");
     }
 
     public String getStartTime() {
-        BrowserUtilities.waitForPageToLoad(10);
+        BrowserUtils.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(startTime));
         return startTime.getAttribute("value");
     }
 
     public String getEndTime() {
-        BrowserUtilities.waitForPageToLoad(10);
+        BrowserUtils.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(endTime));
         return endTime.getAttribute("value");
     }
 
     public List<String> getColumnNames(){
-        BrowserUtilities.waitForPageToLoad(20);
+        BrowserUtils.waitForPageToLoad(20);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.className("grid-header-cell__label")));
-        return BrowserUtilities.getTextFromWebElements(columnName);
+        return BrowserUtils.getTextFromWebElements(columnName);
     }
 }

@@ -1,6 +1,6 @@
 package com.automation.tests.day10_Actions;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +19,7 @@ public class ActionsTests {
     @Test
     public void hoverOnImage(){
         driver.get("http://practice.cybertekschool.com/hovers");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         WebElement img1 = driver.findElement(By.xpath("//*[@id='content']/div/div[1]/img"));
         WebElement img2 = driver.findElement(By.xpath("//*[@id='content']/div/div[2]/img"));
@@ -66,7 +66,7 @@ public class ActionsTests {
         WebElement pdf = driver.findElement(By.xpath("//*[@id='ui-id-5']"));
 
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         actions.moveToElement(enabled).
                 pause(1000).
                 moveToElement(downloads).
@@ -80,7 +80,7 @@ public class ActionsTests {
     @Test
     public void dragAndDropTest(){
         driver.get("https://demos.telerik.com/kendo-ui/dragdrop/index");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.manage().window().maximize();
         // click on accept cookies
         driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[4]/div[2]/div/button")).click();
@@ -90,7 +90,7 @@ public class ActionsTests {
 
         actions.dragAndDrop(moon, earth).perform();
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
 
         String expected = "You did great!";

@@ -1,6 +1,6 @@
 package com.automation.tests.day6;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,18 +12,18 @@ public class SelectByIndex {
 
         WebDriver driver = DriverFactory.createADrive("chrome");
         driver.get("http://practice.cybertekschool.com/dropdown");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         Select selectState = new Select(driver.findElement(By.id("state")));
         selectState.selectByIndex(9);
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         selectState.selectByIndex(selectState.getOptions().size()-1); // selecting last index
 
 
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.quit();
     }
 }

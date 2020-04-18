@@ -1,6 +1,6 @@
 package com.automation.tests.day5;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +12,7 @@ public class iFrameTest {
 
         WebDriver driver = DriverFactory.createADrive("chrome");
         driver.get("http://practice.cybertekschool.com/iframe");
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         // before looking for that element, we need to jump to that frame
         driver.switchTo().frame("mce_0_ifr");
@@ -20,12 +20,12 @@ public class iFrameTest {
         WebElement inputText = driver.findElement(By.id("tinymce"));
         System.out.println(inputText.getText());
 
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         inputText.clear();
         inputText.sendKeys("Hello, World!");
 
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         // exit from the frame
         driver.switchTo().defaultContent();

@@ -1,6 +1,6 @@
 package com.automation.tests.day11_JSExecutor_WebTables;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -53,7 +53,7 @@ public class JSExecutor2 {
 
         WebElement button6 = driver.findElement(By.id("disappearing_button"));
         js.executeScript("arguments[0].click()", button6);
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         WebElement result = driver.findElement(By.id("result"));
         Assert.assertEquals("Now it's gone!", result.getText());
@@ -62,7 +62,7 @@ public class JSExecutor2 {
     @Test
     public void textInputTest(){
         driver.findElement(By.linkText("Form Authentication")).click();
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         WebElement username = driver.findElement(By.name("username"));
         WebElement password = driver.findElement(By.name("password"));
@@ -76,7 +76,7 @@ public class JSExecutor2 {
         js.executeScript("arguments[0].setAttribute('value', 'SuperSecretPassword')", password);
         js.executeScript("arguments[0].click()", loginbtn);
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         String expected = "Welcome to the Secure Area. When you are done click logout below.";
         String subheader = js.executeScript("return document.getElementsByClassName('subheader')[0].textContent").toString();
 
@@ -85,7 +85,7 @@ public class JSExecutor2 {
 
     @Test
     public void scrollToElement(){
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         WebElement link = driver.findElement(By.linkText("Cybertek School"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true)", link);
@@ -99,14 +99,14 @@ public class JSExecutor2 {
 
         for (int x = 0; x < 15; x++) {
             js.executeScript("window.scrollBy(0, 1000)");
-            BrowserUtilities.wait(1);
+            BrowserUtils.wait(1);
         }
     }
 
 
     @AfterMethod
     public void teardown(){
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
         driver.quit();
     }
 

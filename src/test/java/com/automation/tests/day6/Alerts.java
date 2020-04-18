@@ -1,6 +1,6 @@
 package com.automation.tests.day6;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -17,12 +17,12 @@ public class Alerts {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get("http://practice.cybertekschool.com/javascript_alerts");
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         List<WebElement> buttons = driver.findElements(By.tagName("button"));
 
         buttons.get(0).click(); // to click 1st button
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         String popupText = driver.switchTo().alert().getText(); // to get text from pop-up message
         System.out.println(popupText);
         driver.switchTo().alert().accept(); // to click ok
@@ -39,10 +39,10 @@ public class Alerts {
         }
 
         // ________________________________________________________________________
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         buttons.get(1).click();
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         driver.switchTo().alert().dismiss(); // to cancel
 
         String expected2 = "You clicked: Cancel";
@@ -55,12 +55,12 @@ public class Alerts {
         } else {
             System.out.println("Test Failed!");
         }
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         // ________________________________________________________________________
 
         buttons.get(2).click();
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         Alert alert = driver.switchTo().alert();
 
@@ -75,7 +75,7 @@ public class Alerts {
             System.out.println("Test Failed!");
         }
 
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         driver.quit();
     }
 }

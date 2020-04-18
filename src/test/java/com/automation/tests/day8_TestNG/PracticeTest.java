@@ -1,6 +1,6 @@
 package com.automation.tests.day8_TestNG;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 
@@ -44,14 +44,14 @@ public class PracticeTest {
     public void forgotPasswordTest(){
         driver.get("http://practice.cybertekschool.com");
         driver.manage().window().maximize();
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         driver.findElement(By.linkText("Forgot Password")).click();
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         driver.findElement(By.name("email")).sendKeys("testemail@email.com");
         driver.findElement(By.id("form_submit")).submit();
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         Assert.assertEquals(driver.findElement(By.name("confirmation_message")).getText(), "Your e-mail's been sent!");
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
 
     }
@@ -60,14 +60,14 @@ public class PracticeTest {
     public void checkboxTest1(){
         driver.get("http://practice.cybertekschool.com");
         driver.manage().window().maximize();
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         driver.findElement(By.linkText("Checkboxes")).click();
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         List<WebElement> checkboxes = driver.findElements(By.tagName("input"));
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         checkboxes.get(0).click(); // to click checkbox #1
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         Assert.assertTrue(checkboxes.get(0).isSelected(), "Check box #1 is not selected!" );
 

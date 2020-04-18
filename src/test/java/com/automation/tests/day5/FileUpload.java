@@ -1,6 +1,6 @@
 package com.automation.tests.day5;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,7 @@ public class FileUpload {
         WebDriver driver = new ChromeDriver();
 
         driver.get("http://practice.cybertekschool.com/upload");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         WebElement upload = driver.findElement(By.id("file-upload"));
         String filePath = System.getProperty("user.dir")+"/pom.xml";  // its folder from java
@@ -28,7 +28,7 @@ public class FileUpload {
 
         driver.findElement(By.id("file-submit")).click(); // click to upload
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         driver.quit();
     }

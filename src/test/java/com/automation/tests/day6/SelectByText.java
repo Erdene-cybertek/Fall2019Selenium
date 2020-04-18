@@ -1,6 +1,6 @@
 package com.automation.tests.day6;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,7 @@ public class SelectByText {
 
         WebDriver driver = DriverFactory.createADrive("chrome");
         driver.get("http://practice.cybertekschool.com/dropdown");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         //create object webElement
         WebElement dropdown = driver.findElement(By.id("dropdown"));
@@ -24,7 +24,7 @@ public class SelectByText {
         //select visible text
         selectDropdown.selectByVisibleText("Option 2");
 
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         selectDropdown.selectByVisibleText("Option 1");
 
         //
@@ -46,7 +46,7 @@ public class SelectByText {
 
         Select selectByState = new Select(driver.findElement(By.id("state")));
         selectByState.selectByVisibleText("Virginia");
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
 
         String selected = selectByState.getFirstSelectedOption().getText();
         if (selected.equals("Virginia")){
@@ -64,7 +64,7 @@ public class SelectByText {
 
 
 
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         driver.quit();
 
 

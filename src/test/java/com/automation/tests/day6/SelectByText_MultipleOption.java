@@ -1,6 +1,6 @@
 package com.automation.tests.day6;
 
-import com.automation.utilities.BrowserUtilities;
+import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +15,7 @@ public class SelectByText_MultipleOption {
 
         WebDriver driver = DriverFactory.createADrive("chrome");
         driver.get("http://practice.cybertekschool.com/dropdown");
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         Select selectByLanguages = new Select(driver.findElement(By.name("Languages")));
         boolean isMultiple = selectByLanguages.isMultiple();
@@ -31,15 +31,15 @@ public class SelectByText_MultipleOption {
             System.out.println(eachSelectedLanguage.getText());
         }
 
-        BrowserUtilities.wait(2);
+        BrowserUtils.wait(2);
 
         // How to De-select?
         selectByLanguages.deselectByVisibleText("C#");
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         selectByLanguages.deselectAll();
 
 
-        BrowserUtilities.wait(1);
+        BrowserUtils.wait(1);
         driver.quit();
 
 

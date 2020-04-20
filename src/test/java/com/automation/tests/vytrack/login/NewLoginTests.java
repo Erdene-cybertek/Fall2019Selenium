@@ -5,6 +5,7 @@ import com.automation.tests.vytrack.AbstractTestBase;
 import com.automation.utilities.BrowserUtils;
 import com.automation.utilities.Driver;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
@@ -43,6 +44,30 @@ public class NewLoginTests extends AbstractTestBase {
          BrowserUtils.getScreenshot("warning_message");
 
          test.pass("Page title Dashboard was verified");
+
+    }
+
+
+    //Day 23 "Data providers"
+
+    @Test(dataProvider = "credentials")
+    public void loginWithDDT(String userName, String password){
+
+       test = report.createTest("Verify page title");
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(userName, password);
+        test.info("Login as " + userName);
+        Assert.assertEquals(Driver.getDriver().getTitle(), "Dashboard");
+        test.pass("Page title Dashboard was verified");
+    }
+
+    @DataProvider
+    public Object[][] credentials(){                              // Object [][] or Object [] or iterator[]>
+         return new Object[][]{
+                 {"storemanager85"   , "UserUser123"},
+                 {"salesmanager110", "UserUser123"},
+                 {"user16"         , "UserUser123"},
+         };
 
     }
 

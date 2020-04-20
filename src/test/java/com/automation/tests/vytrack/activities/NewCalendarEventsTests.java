@@ -5,11 +5,9 @@ import com.automation.pages.activities.CalendarEventsPage;
 import com.automation.tests.vytrack.AbstractTestBase;
 import com.automation.utilities.DateTimeUtilities;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
 
@@ -73,4 +71,44 @@ public class NewCalendarEventsTests extends AbstractTestBase {
         Assert.assertEquals(calendarEventsPage.getColumnNames(), expected);
 
     }
+
+    // Date 23 "data provider"
+    //    public Object[] eve
+
+    @Test(dataProvider = "calendarEvents")
+
+    public void createCalendarEventTest(String title, String description) {
+        //if you have more one test, and 1st pass but others failing,
+        //you are getting session id is null exception
+        //because driver object was not initialized in time
+        //just create page objects inside a test
+        LoginPage loginPage = new LoginPage();
+        CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
+
+        //only for extent report. To create a test in html report
+        test = report.createTest("Create calendar event for " + title);
+        loginPage.login();
+        calendarEventsPage.navigateTo("Activities", "Calendar Events");
+        calendarEventsPage.clickToCreateCalendarEvent();
+        calendarEventsPage.enterCalendarEventTitle(title);
+        calendarEventsPage.enterCalendarEventDescription(description);
+        calendarEventsPage.clickOnSaveAndClose();
+
+        //verify that calendar event info is correct
+        Assert.assertEquals(calendarEventsPage.getGeneralInfoDescriptionText(), description);
+        Assert.assertEquals(calendarEventsPage.getGeneralInfoTitleText(), title);
+
+        //for extent report. specify that test passed in report (if all assertions passed)
+        test.pass("Calendar event was created successfully!");
+    }
+
+    @DataProvider
+    public Object[][] calendarEvents() {
+        return new Object[][]{
+                {"Daily stand-up", "Scrum meeting to provide updates"},
+                {"Sprint Review", "Scrum meeting where team discussing previous sprint"},
+                {"Sprint Planning", "Scrum meeting where team discussing backlog for following sprint"}
+        };
+    }
+
 }

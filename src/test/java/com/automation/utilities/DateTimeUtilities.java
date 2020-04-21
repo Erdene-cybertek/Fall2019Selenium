@@ -20,7 +20,7 @@ public class DateTimeUtilities {
      *
      * https://www.journaldev.com/17899/java-simpledateformat-java-date-format
      */
-    public static String getTodaysDate(String format){
+    public static String getCurrentDate(String format){
         return LocalDate.now().format(DateTimeFormatter.ofPattern("MMM dd, yyyy"));
     }
 

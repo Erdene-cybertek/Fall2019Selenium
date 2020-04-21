@@ -16,33 +16,66 @@ public class NewCalendarEventsTests extends AbstractTestBase {
     LoginPage loginPage = new LoginPage();
     CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
 
+    /**
+     * Test Case: Default options
+     * Login as sales manager
+     * Go to Activities --> Calendar Events
+     * Click on Create Calendar Event
+     * Default owner name should be current user/
+     **/
     @Test
     public void defaultOptionsTest() {
+        test = report.createTest("Verify default login options");
+
+        LoginPage loginPage = new LoginPage();
+        CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
 
         loginPage.login();
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
         calendarEventsPage.clickToCreateCalendarEvent();
+
         Assert.assertEquals(calendarEventsPage.getOwnerName(), calendarEventsPage.getCurrentUserName());
 
         String actualStartDate = calendarEventsPage.getStartDate();
-        String expectedStartDate = DateTimeUtilities.getTodaysDate("MMM dd, yyyy");
+        String expectedStartDate = DateTimeUtilities.getCurrentDate("MMM d, yyyy");
+
         Assert.assertEquals(actualStartDate, expectedStartDate);
+
+        test.pass("Default options verified");
+
     }
 
+    /**
+     * 35 minutes until 4:05
+     * Test Case: Time difference
+     * Login as sales manager
+     * Go to Activities --> Calendar Events
+     * Click on Create Calendar Event
+     * Verify that difference between start and end time is 1 hour
+     **/
     @Test
     public void timeDifferenceTest(){
 
+        test = report.createTest("Verify time difference");
+
+        LoginPage loginPage = new LoginPage();
+        CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
+
         loginPage.login();
+
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
+
         calendarEventsPage.clickToCreateCalendarEvent();
 
-        String startTime = calendarEventsPage.getStartTime();
-        String endTime = calendarEventsPage.getEndTime();
-        String format = "h:mm a"; // format 5:15 AM
+        String startTime = calendarEventsPage.getStartTime(); //get start time
+        String endTime = calendarEventsPage.getEndTime(); //get end time
+        String format = "h:mm a";//format 5:15 AM for example
 
         long actual = DateTimeUtilities.getTimeDifference(startTime, endTime, format);
 
-        Assert.assertEquals(actual, 1, "Time difference is not correct!");
+        Assert.assertEquals(actual, 1, "Time difference is not correct");
+
+        test.pass("Time difference verified");
 
     }
 
@@ -63,12 +96,19 @@ public class NewCalendarEventsTests extends AbstractTestBase {
     @Test
     public void verifyColumnNamesTest() {
 
+        test = report.createTest("Verify column names");
+
+        LoginPage loginPage = new LoginPage();
+        CalendarEventsPage calendarEventsPage = new CalendarEventsPage();
+
         loginPage.login();
         calendarEventsPage.navigateTo("Activities", "Calendar Events");
 
         List<String> expected = Arrays.asList("TITLE", "CALENDAR", "START", "END", "RECURRENT", "RECURRENCE", "INVITATION STATUS");
 
         Assert.assertEquals(calendarEventsPage.getColumnNames(), expected);
+        test.pass("Column names verified");
+
 
     }
 

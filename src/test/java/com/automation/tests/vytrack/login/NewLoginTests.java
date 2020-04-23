@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class NewLoginTests extends AbstractTestBase {
 
-    @Test
+    @Test(groups = "smoke")
     public void verifyPageTitle() {
         //test --> ExtentTest object
         //we must add to every test at the beginning
@@ -25,6 +25,7 @@ public class NewLoginTests extends AbstractTestBase {
         BrowserUtils.wait(2);
         Assert.assertEquals(Driver.getDriver().getTitle(), "Dashboard");
         //if assertion passed, it will set test status in report to passed
+
 
         test.pass("Page title Dashboard was verified");
     }

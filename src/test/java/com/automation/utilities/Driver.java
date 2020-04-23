@@ -1,4 +1,3 @@
-
 package com.automation.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
